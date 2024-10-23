@@ -54,7 +54,7 @@ export const formField = pgTable("form_field", {
     name: text("name"),
     description: text("subtitle"),
     required: boolean("required").default(false),
-    type: text("type").$type<"text" | "choice" | "date">().notNull(),
+    type: text("type").$type<"text" | "choice" | "date" |"file">().notNull(),
 
     // config for choices
     options: text("options").array(),

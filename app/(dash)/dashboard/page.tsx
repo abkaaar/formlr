@@ -29,7 +29,7 @@ export default function Dashboard({ searchParams }: { searchParams: { q?: string
 
             <div className="container pt-5 flex flex-col gap-6 mb-5">
                 <div>
-                    <h1 className="text-2xl font-bold my-2">Start new form</h1>
+                    <h1 className="text-2xl font-bold my-2">Start new survey</h1>
                     <form className="flex flex-row overflow-auto gap-5" action={makeForm}>
                         <div className="h-auto flex-col">
                             <button
@@ -41,7 +41,7 @@ export default function Dashboard({ searchParams }: { searchParams: { q?: string
                                 </IsLoading>
                             </button>
                             <p className="p-1.5 select-none">
-                                Blank form
+                                Blank survey
                             </p>
                         </div>
                     </form>
@@ -49,7 +49,7 @@ export default function Dashboard({ searchParams }: { searchParams: { q?: string
                 </div>
 
                 <div>
-                    <h2 className="text-2xl font-bold my-2">Recent forms</h2>
+                    <h2 className="text-2xl font-bold my-2">Recent surveys</h2>
                     <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 transition-all">
                         <Suspense fallback={<LoadingFormsList />} key={searchParams.q}>
                             <FormsList search={searchParams.q} />

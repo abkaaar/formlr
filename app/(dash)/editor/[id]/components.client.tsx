@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/utils/tw";
-import { SquareIcon, CircleIcon, XIcon, CalendarIcon, ArrowUpIcon, ArrowDownIcon, MoreVerticalIcon, Trash2Icon, GripHorizontalIcon } from "lucide-react";
+import { SquareIcon, CircleIcon, XIcon, CalendarIcon, ArrowUpIcon, ArrowDownIcon, MoreVerticalIcon, Trash2Icon, GripHorizontalIcon, FileIcon } from "lucide-react";
 import React, { useEffect, useOptimistic, useState, startTransition, type PropsWithChildren } from "react";
 import { useFormStatus } from "react-dom";
 import { Reorder, useDragControls } from "framer-motion"
@@ -51,7 +51,7 @@ export function MakeField({ formId, children, skeleton }: { formId: string, chil
         (state: number[], newNumber: number) => [...state, newNumber]
     )
 
-    const make = (type: "text" | "choice" | "date") => () => {
+    const make = (type: "text" | "choice" | "date" | "file") => () => {
         addOptimistic(Date.now())
         return makeField(formId, type)
     }
@@ -73,6 +73,7 @@ export function MakeField({ formId, children, skeleton }: { formId: string, chil
                     <DropdownMenuItem onClick={make("text")}>Text</DropdownMenuItem>
                     <DropdownMenuItem onClick={make("choice")}>Choice</DropdownMenuItem>
                     <DropdownMenuItem onClick={make("date")}>Date</DropdownMenuItem>
+                    <DropdownMenuItem onClick={make("file")}>File</DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
         </>
@@ -86,7 +87,7 @@ interface FieldProps {
         name?: string | null
         options?: string[] | null
         required?: boolean | null
-        type: "text" | "choice" | "date"
+        type: "text" | "choice" | "date" | "file"
         optionsStyle?: "dropdown" | "radio" | "checkbox" | null
         textSize?: "normal" | "textarea" | null
         index?: number | null
@@ -168,7 +169,19 @@ export function Field({ field: f }: FieldProps) {
                                     <SelectItem value="dropdown">Drop-down</SelectItem>
                                 </SelectContent>
                             </Select>
-                        ) : field.type === "date" ? (
+                        ) : field.type === "file" ? (
+                            <Select defaultValue="file">
+                                <SelectTrigger className="w-[180px] h-full ">
+                                    <input type="hidden" name={`form:${field.id}:file-style`} value="..." />
+                                    <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="file">File</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        ):
+                        
+                        field.type === "date" ? (
                             <Select defaultValue="date">
                                 <SelectTrigger className="w-[180px] h-full ">
                                     {/* <input type="hidden" name={`form:${field.id}:date-style`} value="..." /> */}
@@ -271,6 +284,22 @@ export function Field({ field: f }: FieldProps) {
                     </CardContent>
                 )}
 
+            {field.type === "file" && (
+                    <CardContent>
+                        <TooltipText text="This is what the file looks like for people who fill out the form.">
+                            <Button
+                                variant="outline"
+                                disabled
+                                className="w-[280px] justify-start text-left font-normal"
+                            >
+                                {/* <CalendarIcon className="mr-2 h-4 w-4" /> */}
+                                <FileIcon className="mr-2 h-4 w-4"/>
+                                <span>choose file</span>
+                            </Button>
+                        </TooltipText>
+                    </CardContent>
+                )}
+
                 {field.type === "text" && (
                     <CardContent>
                         {field.textSize === "normal" ? (
@@ -296,7 +325,7 @@ export function Field({ field: f }: FieldProps) {
                     <div className="flex gap-4 flex-row w-full">
                         <div className="ms-auto flex items-center space-x-2">
                             <Label htmlFor={`${field.id}:required`} className="text-sm">Required</Label>
-                            <Switch id={`${field.id}:required`} className="scale-90" checked={field.required ?? false} onCheckedChange={() => {
+                            <Switch id={`${field.id}:required`} className="scale-90 bg-black" checked={field.required ?? false} onCheckedChange={() => {
                                 document.getElementsByName(`form:${field.id}:required`)?.[0]?.setAttribute("value", (field.required ? "false" : "true"))
                                 changeField({ required: !field.required })
                             }} />

@@ -99,7 +99,7 @@ export default async function EditForm({ params }: { params: { id: string } }) {
                 </Suspense>
 
                 <MakeField formId={form.id} skeleton={<LoadingFields />}>
-                    <Button variant="default" className="self-start">
+                    <Button variant="outline" className="self-start">
                         Add question
                     </Button>
                 </MakeField>

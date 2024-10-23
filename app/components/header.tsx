@@ -19,10 +19,11 @@ export default function Header({ children, name = "Forms", justLoading = false, 
                             className="flex items-center gap-2 hover:bg-transparent -ms-3"
                             href="/dashboard"
                         >
-                            <ClipboardListIcon />
-                            <h1 className="inline-block whitespace-nowrap font-bold text-lg">
+                            {/* <ClipboardListIcon /> */}
+                            <img src="/logo.png" alt="logo" className="w-auto h-12" />
+                            {/* <h1 className="inline-block whitespace-nowrap font-bold text-lg">
                                 {name}
-                            </h1>
+                            </h1> */}
                         </Link>
                     </Button>
                 </nav>

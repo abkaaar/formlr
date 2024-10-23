@@ -71,7 +71,7 @@ export async function SaveForm(data: FormData) {
     return revalidatePath(`/editor/${formId}`)
 }
 
-export async function makeField(formId: string, type: "text" | "choice" | "date") {
+export async function makeField(formId: string, type: "text" | "choice" | "date" | "file") {
     const userId = await getCurrentUser()
     if (!userId || !formId) return "unauthorized"
 

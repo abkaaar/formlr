@@ -283,9 +283,9 @@ export function DateField({ field }: FieldProps) {
 }
 
 export function PrivacyLink() {
-    return <Link href="#" className="underline hover:font-bold" onClick={() => toast.message("What is privacy?")}>Privacy Policy</Link>
+    return <Link href="/" className="underline hover:font-bold" onClick={() => toast.message("What is privacy?")}>Privacy Policy</Link>
 }
 
 export function TermsLink() {
-    return <Link href="#" className="underline hover:font-bold" onClick={() => toast.message("What are terms? Just be good!")}>Terms of Service</Link>
+    return <Link href="/" className="underline hover:font-bold" onClick={() => toast.message("What are terms? Just be good!")}>Terms of Service</Link>
 }

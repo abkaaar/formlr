@@ -5,7 +5,8 @@ import { getCurrentUser } from "@/utils/jwt";
 import { createId } from "@paralleldrive/cuid2";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
-
+import fs from "fs/promises"
+import {z} from "zod"
 
 export async function submitForm(prevState: any, data: FormData): Promise<{ error?: string } | void> {
     const formId = data?.get('formId') as string | undefined
@@ -101,6 +102,50 @@ export async function submitForm(prevState: any, data: FormData): Promise<{ erro
 
             fieldsData.set(field.id, [value])
         }
+        else if (field.type === "file"){
+            // const value = data.get(field.id) as string | undefined
+
+            // if (field.required && !value) {
+            //     return { error: `Field ${field.name} is required` }
+            // }
+        
+            // if (!value) continue
+            // console.log(field.type)
+
+            // fieldsData.set(field.id, [value])
+
+
+            const file = data.get(field.id) as File | null; // Get the File object
+
+            if (field.required && !file) {
+                return { error: `Field ${field.name} is required` };
+            }
+            if (!file) continue;
+        
+            // Validate the file with Zod (or any other validation library)
+            const fileSchema = z.instanceof(File).refine(
+                (file) => file.size > 0, // Ensure file size is greater than 0
+                { message: "File is required and should not be empty" }
+            );
+
+            try {
+                fileSchema.parse(file); // Validate the file
+            } catch (e) {
+                return { error: `Invalid file for field ${field.name}` };
+            }
+        
+            // Simulate saving the file to a server or cloud storage
+            const filePath = `/uploads/${file.name}`; // Construct the file path string
+
+            // Implement logic to save the file to the server/cloud storage
+            //  fs.writeFileSync(filePath, await file.arrayBuffer()); // Convert file to buffer and save
+            await fs.writeFile(`public${filePath}`, Buffer.from(await file.arrayBuffer()))
+
+        
+            fieldsData.set(field.id, [filePath]); // Save the file path string in fieldsData    
+
+
+    }
     }
 
     if (fieldsData.size === 0) {

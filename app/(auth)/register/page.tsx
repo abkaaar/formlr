@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata = {
-    title: "Login",
+    title: "Register",
     robots: {
         index: false,
         follow: false,
@@ -12,7 +12,7 @@ export const metadata = {
 } satisfies Metadata
 
 
-export default function Login() {
+export default function Register() {
 
     const state = "{}"
     const redirect_uri = `${baseUrl}/api/oauth/google`
@@ -42,11 +42,11 @@ export default function Login() {
       </header>
       
         <div className="flex h-screen w-full items-center justify-center flex-col overflow-hidden">
-            {/* // make the login link max size  */}
+            {/* // make the Register link max size  */}
             <Link
                 href={googleOauthUrl}
                 // style={{ fontSize: "clamp(1.5rem, 35vw, 2000rem)" }}
-                className="login-link p-2 w-full text-center"
+                className="Register-link p-2 w-full text-center"
             >
                 <Button variant={"outline"}>
                     <img src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000" alt="google" className="h-6 w-6 mr-2" />

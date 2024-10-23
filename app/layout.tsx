@@ -12,19 +12,19 @@ export const metadata: Metadata = {
     template: `%s - ${siteName}`,
   },
   metadataBase: new URL(baseUrl),
-  description: "A form site!!",
+  description: "A survey site!!",
   openGraph: {
     type: "website",
     siteName,
     locale: "en_US",
     images: [
-      "/favicon.png",
+      "/images/favicon.ico",
     ],
   },
   twitter: {
     card: "summary",
     images: [
-      "/favicon.png",
+      "/images/favicon.ico",
     ],
   },
 };
@@ -40,11 +40,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <>
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} >
         {children}
         <Toaster />
-      </body>
+     </body>
     </html>
+    
+    </>
+
   );
 }

@@ -9,7 +9,7 @@ export const revalidate = 0
 
 async function makeUserCookie(userId: string) {
     const token = await createUserToken({ id: userId })
-    const response = NextResponse.redirect(new URL("/", baseUrl))
+    const response = NextResponse.redirect(new URL("/dashboard", baseUrl))
     response.cookies.set("token", token, {
         expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
         path: "/",

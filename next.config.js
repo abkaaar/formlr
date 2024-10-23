@@ -13,7 +13,8 @@ const nextConfig = {
         return [
             {
                 source: '/',
-                destination: '/login',
+                destination: '/home',
+                // destination: '/login',
                 permanent: false,
             },
             {
@@ -26,11 +27,12 @@ const nextConfig = {
             },
             {
                 source: '/login',
-                destination: '/:from?from=',
+                // destination: '/:from?from=/dashboard',
+                destination: '/dashboard',
                 permanent: false,
                 has: [
                     { type: 'cookie', key: 'token' },
-                    { type: 'query', key: 'from' }
+                    // { type: 'query', key: 'from' }
                 ]
             },
             {
@@ -52,16 +54,16 @@ const nextConfig = {
                     { type: 'cookie', key: 'token' }
                 ]
             },
-            {
-                source: '/index',
-                destination: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                permanent: false,
-            },
-            {
-                source: '/index.html',
-                destination: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                permanent: false,
-            },
+            // {
+            //     source: '/index',
+            //     destination: '',
+            //     permanent: false,
+            // },
+            // {
+            //     source: '/index.html',
+            //     destination: '',
+            //     permanent: false,
+            // },
 
         ];
     }
