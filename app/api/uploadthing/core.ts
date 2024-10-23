@@ -10,7 +10,7 @@ const auth = (req: Request) => ({ id: "fakeId" }); // Replace with real auth log
 export const ourFileRouter = {
   fileUploader: f({ 
     // Specify allowed types explicitly (e.g., 'blob' to support general file types, 'image' for images)
-    blob: { maxFileSize: "4MB", maxFileCount: 1 }, 
+    blob: { maxFileSize: "4MB", maxFileCount: 10 }, 
   })
     // Middleware to handle authentication and set metadata before the upload starts
     .middleware(async ({ req }) => {

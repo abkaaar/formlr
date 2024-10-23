@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { db, schema } from "@/utils/db"
 import { asc, eq } from "drizzle-orm"
 import { notFound } from "next/navigation";
-import { ChoiceField, DateField, PrivacyLink, SubmitFormButton, TermsLink, TextField, TheForm } from "./components.client";
+import { ChoiceField, DateField, PrivacyLink, SubmitFormButton, TermsLink, TextField, TheForm, FileField } from "./components.client";
 import TooltipText from "@/components/tooltip-text";
 import type { Metadata } from "next";
 import { siteName } from "@/utils/const";
@@ -112,6 +112,8 @@ export default async function FormPage({ params, noEdit = false }: { params: { i
                             <ChoiceField field={field} />
                         ) : field.type === "date" ? (
                             <DateField field={field} />
+                        ) : field.type === "file" ? (
+                            <FileField field={field} />
                         ) : null}
                     </CardContent>
                 </Card>

@@ -16,7 +16,7 @@ export function SendButton({ children, formId }: PropsWithChildren<{ formId: str
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                    <DialogTitle>Send form</DialogTitle>
+                    <DialogTitle>Send survey</DialogTitle>
                     <DialogDescription>
                         Anyone who has this link will be able to submit responses.
                     </DialogDescription>

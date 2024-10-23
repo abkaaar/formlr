@@ -43,6 +43,7 @@ export function SubmitFormButton() {
             type="submit"
             disabled={formStatus.pending}
             className="flex gap-2"
+            variant={"outline"}
         >
             {/* {formStatus.pending ? "Submitting..." : "Submit"} */}
             {formStatus.pending && <Loader2 className="animate-spin" />} Submit
@@ -57,7 +58,7 @@ interface FieldProps {
         name?: string | null
         options?: string[] | null
         required?: boolean | null
-        type: "text" | "choice" | "date"
+        type: "text" | "choice" | "date" | "file"
         optionsStyle?: "dropdown" | "radio" | "checkbox" | null
         textSize?: "normal" | "textarea" | null
         otherOption?: boolean | null
@@ -275,6 +276,20 @@ export function DateField({ field }: FieldProps) {
         <Input
             name={field.id}
             type="date"
+            className="w-full sm:w-[280px]"
+            required={!!field.required}
+            disabled={formStatus.pending}
+        />
+    )
+}
+
+export function FileField({ field }: FieldProps) {
+    const formStatus = useFormStatus();
+
+    return (
+        <Input
+            name={field.id}
+            type="file"
             className="w-full sm:w-[280px]"
             required={!!field.required}
             disabled={formStatus.pending}

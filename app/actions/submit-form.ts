@@ -103,17 +103,6 @@ export async function submitForm(prevState: any, data: FormData): Promise<{ erro
             fieldsData.set(field.id, [value])
         }
         else if (field.type === "file"){
-            // const value = data.get(field.id) as string | undefined
-
-            // if (field.required && !value) {
-            //     return { error: `Field ${field.name} is required` }
-            // }
-        
-            // if (!value) continue
-            // console.log(field.type)
-
-            // fieldsData.set(field.id, [value])
-
 
             const file = data.get(field.id) as File | null; // Get the File object
 
@@ -134,15 +123,39 @@ export async function submitForm(prevState: any, data: FormData): Promise<{ erro
                 return { error: `Invalid file for field ${field.name}` };
             }
         
+
+            // Upload the file to UploadThing
+            // try {
+        // Upload the file to UploadThing
+        // const uploadedFile = await uploadFiles({
+        //     files: [file], // Send the file to be uploaded
+        //     endpoint: 'image'  // Specify the correct endpoint, ensure it matches your router
+        // });
+
+    //     if (uploadedFile && uploadedFile.length > 0) {
+    //         const fileUrl = uploadedFile[0].url;  // Get the uploaded file's URL
+
+    //         // Store the uploaded file's URL instead of the file path
+    //         fieldsData.set(field.id, [fileUrl]);
+    //     } else {
+    //         return { error: `Failed to upload the file for field ${field.name}` };
+    //     }
+
+    // } catch (uploadError) {
+    //     return { error: `Error uploading file for field ${field.name}: ${uploadError.message}` };
+    // }
+
             // Simulate saving the file to a server or cloud storage
             const filePath = `/uploads/${file.name}`; // Construct the file path string
 
             // Implement logic to save the file to the server/cloud storage
-            //  fs.writeFileSync(filePath, await file.arrayBuffer()); // Convert file to buffer and save
-            await fs.writeFile(`public${filePath}`, Buffer.from(await file.arrayBuffer()))
+            // fs.writeFileSync(filePath, await file.arrayBuffer()); // Convert file to buffer and save
 
-        
-            fieldsData.set(field.id, [filePath]); // Save the file path string in fieldsData    
+            await fs.writeFile(`public${filePath}`, Buffer.from(await file.arrayBuffer()))
+            
+            fieldsData.set(field.id, [filePath]); // Save the file path string in fieldsData 
+            
+            
 
 
     }
