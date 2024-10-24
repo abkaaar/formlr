@@ -51,8 +51,8 @@ export default async function ResponsesPage({
           </Button>
         </SendButton>
       </Header>
-      <div className="container lg:max-w-[750px] pt-5 flex flex-col gap-6 mb-5">
-        <Card className="border-t-4 border-t-primary">
+      <div className="container lg:max-w-[1300px] pt-5 flex flex-col gap-6 mb-5">
+        <Card className="border-2 border-[#FF4F2F] sm:flex justify-between">
           <div className="flex flex-col gap-1.5 p-6">
             <h1 className="text-2xl font-bold">{form.name}</h1>
             <p className="whitespace-break-spaces">
@@ -117,11 +117,12 @@ async function ResponsesList({ formId }: { formId: string }) {
   );
 
   return(
+<div className="overflow-x-auto">
 <table className="table-auto w-full">
       <thead>
         <tr>
           {fields.map((field) => (
-            <th key={field.id} className="border px-4 py-2">
+            <th key={field.id} className="border px-4 py-2 bg-slate-50">
               {field.name || 'Unnamed Field'}
             </th>
           ))}
@@ -142,6 +143,7 @@ async function ResponsesList({ formId }: { formId: string }) {
         )}
       </tbody>
     </table>
+</div>
 
   );
 

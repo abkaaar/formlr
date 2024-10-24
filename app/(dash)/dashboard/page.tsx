@@ -36,8 +36,8 @@ export default function Dashboard({ searchParams }: { searchParams: { q?: string
                                 type="submit"
                                 className="m-0.5 w-40 h-28 border rounded-lg flex items-center justify-center hover:bg-secondary/50 bg-card text-card-foreground shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                             >
-                                <IsLoading className="text-primary w-14 h-14">
-                                    <PlusIcon className="text-primary w-14 h-14" />
+                                <IsLoading className="text-[#FF4F2F] w-14 h-14">
+                                    <PlusIcon className="text-[#FF4F2F] w-14 h-14" />
                                 </IsLoading>
                             </button>
                             <p className="p-1.5 select-none">

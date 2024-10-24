@@ -37,7 +37,7 @@ export default async function SubmittedFormPage({ params }: { params: { id: stri
 
     return (
         <div className="min-h-screen bg-background container lg:max-w-[750px] flex flex-col gap-6 py-5">
-            <Card className="border-t-4 border-t-primary">
+            <Card className="border-2 border-[#FF4F2F]">
                 <CardHeader>
                     <h1 className="text-2xl font-bold">{form.name}</h1>
                     <p className="whitespace-break-spaces">Your response has been recorded.</p>

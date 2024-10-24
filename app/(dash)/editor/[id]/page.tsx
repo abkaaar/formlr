@@ -55,7 +55,7 @@ export default async function EditForm({ params }: { params: { id: string } }) {
 
             <div className="container lg:max-w-[750px] pt-5 flex flex-col gap-6 mb-5">
                 {/* <h1>Edit form: {params.id}</h1> */}
-                <Card className="border-t-4 border-t-primary">
+                <Card className="border-2 border-[#FF4F2F]">
                     <CardHeader>
                         <input type="hidden" name="form:id" value={form.id} />
                         <Input
