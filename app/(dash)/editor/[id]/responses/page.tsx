@@ -11,10 +11,10 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import Link from "next/link";
-import { Suspense } from "react";
+import React, { Suspense } from "react";
 import { db, schema } from "@/utils/db";
 import { eq, desc, asc } from "drizzle-orm";
-import { Loader2 } from "lucide-react";
+import { BarChart2Icon, Loader2, PieChartIcon } from "lucide-react";
 import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   } satisfies Metadata;
 }
 
+
 export default async function ResponsesPage({
   params,
 }: {
@@ -46,17 +47,15 @@ export default async function ResponsesPage({
       <Header userMenuMargin={false} name={form.name}>
         {/* more buttons */}
         <SendButton formId={form.id}>
-          <Button className="ms-auto" variant={"outline"}>
-            Send
-          </Button>
+          <Button className="ms-auto" variant={"outline"}>Send</Button>
         </SendButton>
       </Header>
-      <div className="container lg:max-w-[1300px] pt-5 flex flex-col gap-6 mb-5">
-        <Card className="border-2 border-[#FF4F2F] sm:flex justify-between">
+      <div className="container lg:max-w-[1250px] pt-5 flex flex-col gap-6 mb-5">
+        <Card className="sm:flex sm:justify-between  border-2 border-[#FF4F2F]">
           <div className="flex flex-col gap-1.5 p-6">
             <h1 className="text-2xl font-bold">{form.name}</h1>
             <p className="whitespace-break-spaces">
-              View the responses from the survey.
+              View the responses to the form.
             </p>
           </div>
 
@@ -72,6 +71,7 @@ export default async function ResponsesPage({
               </Button>
 
               <Button variant="secondary">Settings</Button>
+              <Button variant="secondary">Analytics</Button>
             </div>
           </CardFooter>
         </Card>
@@ -92,6 +92,27 @@ function LoadingResponsesList() {
     </div>
   );
 }
+
+// async function ResponsesList({ formId }: { formId: string }) {
+//   const fields = await db.query.formField.findMany({
+//     where: eq(schema.formField.formId, formId),
+//     orderBy: asc(schema.formField.index),
+//   });
+
+//   return fields.map((field, index) => (
+
+
+//     <Card key={field.id}>
+//       <CardHeader>
+//         <h2 className="text-xl">{field.name || `Question ${index + 1}`}</h2>
+//       </CardHeader>
+//       <CardContent>
+//         <ResponsesListData fieldId={field.id} />
+//       </CardContent>
+//     </Card>
+//   ));
+
+// .....................................................
 
 async function ResponsesList({ formId }: { formId: string }) {
   const fields = await db.query.formField.findMany({
@@ -116,62 +137,68 @@ async function ResponsesList({ formId }: { formId: string }) {
     })
   );
 
-  return(
-<div className="overflow-x-auto">
-<table className="table-auto w-full">
-      <thead>
-        <tr>
-          {fields.map((field) => (
-            <th key={field.id} className="border px-4 py-2 bg-slate-50">
-              {field.name || 'Unnamed Field'}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {allResponses.length > 0 && (
-          // Iterate through the number of responses and create a new row for each
-          Array.from({ length: Math.max(...allResponses.map(r => r.responses.length)) }).map((_, rowIndex) => (
-            <tr key={rowIndex}>
-              {allResponses.map(({ responses, fieldId }) => (
-                <td key={fieldId} className="border px-4 py-2">
-                  {responses[rowIndex] ? responses[rowIndex].join(', ') : "No response"}
-                </td>
-              ))}
-            </tr>
-          ))
-        )}
-      </tbody>
-    </table>
-</div>
-
-  );
-
-//   return fields.map((field, index) => (
-    <>
-      {/* <table className="table-auto border-collapse">
-      <tbody>
-        {fields.map((field, index) => (
-          <tr key={field.id}>
-            <td className="border px-4 py-2">{field.name || `Question ${index + 1}`}</td>
-            <td className="border px-4 py-2">
-              <ResponsesListData fieldId={field.id} />
-            </td>
+  return (
+    <div className="overflow-x-auto">
+      <table className="table-auto w-full">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            {fields.map((field) => (
+              <th key={field.id} className="border px-4 py-2 bg-slate-50">
+                {field.name || "Unnamed Field"}
+              </th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-      </table> */}
-      {/* <Card key={field.id}>
-                <CardHeader>
-                    <h2 className="text-xl">{field.name || `Question ${index + 1}`}</h2>
-                </CardHeader>
-                <CardContent>
-                    <ResponsesListData fieldId={field.id} />                    
-                </CardContent>
-            </Card> */}
-    </>
-//   ));
+        </thead>
+        <tbody>
+          {allResponses.length > 0 &&
+            // Iterate through the number of responses and create a new row for each
+            Array.from({
+              length: Math.max(...allResponses.map((r) => r.responses.length)),
+            }).map((_, rowIndex) => (
+              <tr key={rowIndex}>
+                <td>{rowIndex + 1}</td>
+                {allResponses.map(({ responses, fieldId }) => (
+                  <td key={fieldId} className="border px-4 py-2">
+                    {responses[rowIndex] ? (
+                      Array.isArray(responses[rowIndex]) ? (
+                        // Handle array of responses
+                        responses[rowIndex].map((response, index) => (
+                          response.startsWith("/uploads/") || response.startsWith("https://") ? (
+                            <React.Fragment key={index}>
+                              <a href={response} target="_blank" rel="noopener noreferrer" className="underline font-light">
+                                {response} <span className="text-[#FF4F2F]">View File</span>
+                              </a>
+                              {index < responses[rowIndex].length - 1 && ", "}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment key={index}>
+                              <span>{response}</span>
+                              {index < responses[rowIndex].length - 1 && ", "}
+                            </React.Fragment>
+                          )
+                        ))
+                      ) : (
+                        // Handle single response
+                        typeof responses[rowIndex] === "boolean" ? (
+                          <span>{responses[rowIndex] ? "Yes" : "No"}</span>
+                        ) : (
+                          <span>{responses[rowIndex]}</span>
+                        )
+                      )
+                    ) : (
+                      "No response"
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
+
 
 async function ResponsesListData({ fieldId }: { fieldId: string }) {
   const responses = await db.query.formSubmissionFieldValue.findMany({
@@ -190,11 +217,26 @@ async function ResponsesListData({ fieldId }: { fieldId: string }) {
 
   return (
     <ul className="list-disc pl-4 text-sm">
+      {/* {Array.from(map).map(([value, count]) => (
+                <li key={value}>
+                    {value} <span className="text-muted-foreground">({count})</span>
+                </li>
+            ))} */}
+
       {Array.from(map).map(([value, count]) => (
         <li key={value}>
-          {value} <span className="text-muted-foreground">({count})</span>
+          {(value.startsWith("/uploads/") || value.startsWith("https://")) ? ( // Check if value is a file path
+            <a href={value} target="_blank" rel="noopener noreferrer">
+              View File
+            </a>
+          ) : (
+            value
+          )}
+          <span className="text-muted-foreground"> ({count})</span>
         </li>
       ))}
     </ul>
   );
 }
+
+

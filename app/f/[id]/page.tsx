@@ -129,7 +129,7 @@ export default async function FormPage({ params, noEdit = false }: { params: { i
                 <p className="flex gap-2 text-muted-foreground text-xs mx-auto">
                     {form.user.role === "admin" ? "This form was made by abkaaar." : "This content is neither created nor endorsed by Abkaar."}
                     {/* <Link href={`#report?form=${form.id}`} className="underline hover:font-bold">Report Abuse</Link>- */}
-                    <Link href={`mailto:forms@riskymh.dev?subject=Reporting form for abuse&body=https://forms.riskymh.dev/f/${form.id}`} className="underline hover:font-bold">Report Abuse</Link>-
+                    <Link href={`mailto:forms@abkaaar.dev?subject=Reporting form for abuse&body=https://forms.abkaaar.dev/f/${form.id}`} className="underline hover:font-bold">Report Abuse</Link>-
                     {/* <Link href="#" className="underline hover:font-bold">Terms of Service</Link>- */}
                     {/* <Link href="#" className="underline hover:font-bold">Privacy Policy</Link> */}
                     <TermsLink />-<PrivacyLink />
