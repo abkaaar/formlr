@@ -26,7 +26,7 @@ const Nav = () => {
                   />
                 </a>
               </div>
-              <div className="flex lg:hidden">
+              {/* <div className="flex lg:hidden">
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(true)}
@@ -35,7 +35,7 @@ const Nav = () => {
                   <span className="sr-only">Open main menu</span>
                   <Bars3Icon aria-hidden="true" className="h-6 w-6" />
                 </button>
-              </div>
+              </div> */}
               {/* <div className="hidden lg:flex lg:gap-x-12">
                 {navigation.map((item) => (
                   <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">

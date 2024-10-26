@@ -40,7 +40,7 @@ export default function Home() {
                   />
                 </a>
               </div>
-              <div className="flex lg:hidden">
+              {/* <div className="flex lg:hidden">
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(true)}
@@ -49,7 +49,7 @@ export default function Home() {
                   <span className="sr-only">Open main menu</span>
                   <Bars3Icon aria-hidden="true" className="h-6 w-6" />
                 </button>
-              </div>
+              </div> */}
              
               
               <div className="hidden w-2 lg:flex lg:flex-1 lg:justify-end">
