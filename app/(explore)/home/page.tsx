@@ -52,8 +52,8 @@ export default function Home() {
               </div> */}
              
               
-              <div className=" w-2 lg:flex lg:flex-1 lg:justify-end">
-                <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900" ><Button className='bg-[#FF4F2F] hover:bg-[#CF2101]'>Sign in <span aria-hidden="true" className="ml-2">&rarr;</span></Button></Link>
+              <div className="">
+                <Link href="/login" className=" font-semibold leading-6" ><Button className='bg-[#FF4F2F] hover:bg-[#CF2101] p-2'>Sign in <span aria-hidden="true" className="ml-2">&rarr;</span></Button></Link>
               </div>
             </nav>
             {/* <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
