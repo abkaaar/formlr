@@ -7,10 +7,13 @@ import { and, eq, sql } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 
-export async function SaveForm(data: FormData) {
+export async function SaveForm(data: FormData): Promise<void> {
     const formId = data.get('form:id')
     const userId = await getCurrentUser()
-    if (!userId || !formId || typeof formId !== "string") return "unauthorized"
+    if (!userId || !formId || typeof formId !== "string")  
+         { 
+            throw new Error("Unauthorized");
+        }
 
     const name = (data.get('form:name') ?? undefined) as string | undefined
     const description = (data.get('form:description') ?? undefined) as string | undefined
@@ -27,7 +30,11 @@ export async function SaveForm(data: FormData) {
         ))
         .returning({ id: schema.form.id })
 
-    if (!change?.[0]?.id) return "unauthorized"
+    if (!change?.[0]?.id){
+        { 
+            throw new Error("Unauthorized");
+        }
+    }
 
     console.time("update")
 
