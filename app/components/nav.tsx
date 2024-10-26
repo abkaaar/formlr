@@ -4,11 +4,11 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
-const navigation = [
-    { name: 'Product', href: '/' },
-    { name: 'Features', href: '/' },
-    { name: 'Company', href: '/' },
-  ]
+// const navigation = [
+//     { name: 'Product', href: '/' },
+//     { name: 'Features', href: '/' },
+//     { name: 'Company', href: '/' },
+//   ]
 
 const Nav = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -48,7 +48,7 @@ const Nav = () => {
                 <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900" ><Button className='bg-[#FF4F2F] hover:bg-[#CF2101]'>Sign in <span aria-hidden="true" className="ml-2">&rarr;</span></Button></Link>
               </div>
             </nav>
-            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+            {/* <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
               <div className="fixed inset-0 z-50" />
               <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                 <div className="flex items-center justify-between">
@@ -93,7 +93,7 @@ const Nav = () => {
                   </div>
                 </div>
               </DialogPanel>
-            </Dialog>
+            </Dialog> */}
           </header>
       </>
     );

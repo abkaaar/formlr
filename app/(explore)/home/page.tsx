@@ -15,11 +15,11 @@ import { Button } from '@/components/ui/button'
                 ))}
               </div> */}
 
-const navigation = [
-    { name: 'Product', href: '/' },
-    { name: 'Features', href: '/' },
-    { name: 'Company', href: '/' },
-  ]
+// const navigation = [
+//     { name: 'Product', href: '/' },
+//     { name: 'Features', href: '/' },
+//     { name: 'Company', href: '/' },
+//   ]
 
 export default function Home() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -56,7 +56,7 @@ export default function Home() {
                 <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900" ><Button className='bg-[#FF4F2F] hover:bg-[#CF2101]'>Sign in <span aria-hidden="true" className="ml-2">&rarr;</span></Button></Link>
               </div>
             </nav>
-            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+            {/* <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
               <div className="fixed inset-0 z-50" />
               <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                 <div className="flex items-center justify-between">
@@ -101,7 +101,7 @@ export default function Home() {
                   </div>
                 </div>
               </DialogPanel>
-            </Dialog>
+            </Dialog> */}
           </header>
     
           <div className="relative isolate px-6 pt-1 lg:px-8">
