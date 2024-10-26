@@ -93,27 +93,6 @@ function LoadingResponsesList() {
   );
 }
 
-// async function ResponsesList({ formId }: { formId: string }) {
-//   const fields = await db.query.formField.findMany({
-//     where: eq(schema.formField.formId, formId),
-//     orderBy: asc(schema.formField.index),
-//   });
-
-//   return fields.map((field, index) => (
-
-
-//     <Card key={field.id}>
-//       <CardHeader>
-//         <h2 className="text-xl">{field.name || `Question ${index + 1}`}</h2>
-//       </CardHeader>
-//       <CardContent>
-//         <ResponsesListData fieldId={field.id} />
-//       </CardContent>
-//     </Card>
-//   ));
-
-// .....................................................
-
 async function ResponsesList({ formId }: { formId: string }) {
   const fields = await db.query.formField.findMany({
     where: eq(schema.formField.formId, formId),
