@@ -109,9 +109,14 @@ export async function deleteField(formId: string, fieldId: string) {
     return revalidatePath(`/editor/${formId}`)
 }
 
-export async function makeForm() {
+export async function makeForm(formData: FormData): Promise<void> {
     const userId = await getCurrentUser()
-    if (!userId) return "unauthorized"
+    if (!userId){
+         // Optionally throw an error or handle it differently based on your requirements
+         throw new Error("Unauthorized");
+    } 
+        
+        // return "unauthorized"
 
     const form = await db.insert(schema.form)
         .values({
@@ -121,7 +126,9 @@ export async function makeForm() {
         })
         .returning({ id: schema.form.id })
 
-    if (!form?.[0]?.id) return "unauthorized"
+    if (!form?.[0]?.id){
+        throw new Error("Form creation failed");
+    }
 
     await db.insert(schema.formField)
         .values([
