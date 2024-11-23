@@ -5,17 +5,7 @@ const Footer = () => {
           <div className="mx-auto px-4 container overflow-hidden flex flex-col lg:flex-row justify-between">
           
           <div className="w-2/3 block sm:flex text-sm mt-6 lg:mt-0">
-              <ul className="text-black list-none p-0 font-thin flex flex-col text-left w-full">
-                  <li className="inline-block py-2 px-3 text-black uppercase font-medium tracking-wide">Product</li>
-              </ul>
-              <ul className="text-black list-none p-0 font-thin flex flex-col text-left w-full">
-                  <li className="inline-block py-2 px-3 text-black uppercase font-medium tracking-wide">Company</li>
-                  
-              </ul>
-              <ul className="text-black list-none p-0 font-thin flex flex-col text-left w-full">
-                  <li className="inline-block py-2 px-3 text-black uppercase font-medium tracking-wide">Developers</li>
-                  
-              </ul>
+             
                <div className="flex pl-4 justify-start mt-2">
                       <a className="flex items-center text-[#FF4F2F] mr-6 no-underline" href="/">
                           <svg viewBox="0 0 24 24" className="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg">

@@ -123,7 +123,7 @@ async function ResponsesList({ formId }: { formId: string }) {
           <tr>
             <th>S/N</th>
             {fields.map((field) => (
-              <th key={field.id} className="border px-4 py-2 bg-slate-50">
+              <th key={field.id} className="border px-4 py-2">
                 {field.name || "Unnamed Field"}
               </th>
             ))}
