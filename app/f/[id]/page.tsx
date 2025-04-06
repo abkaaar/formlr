@@ -83,7 +83,7 @@ export default async function FormPage({ params, noEdit = false }: { params: { i
 
     return (
         <TheForm>
-            <Card className="border-2 border-[#FF4F2F]">
+            <Card className="border-2 border-[#3B82F6]">
                 <CardHeader>
                     <input type="hidden" name="formId" value={form.id} />
                     <h1 className="text-2xl font-bold">{form.name}</h1>

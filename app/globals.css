@@ -11,7 +11,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
     /* --primary: #100241; */
-    --primary: #FF4F2F;
+    /* --primary: #3B82F6; */
+    --primary: #3B82F6;   
     /* --primary: 24.6 95% 53.1%; */
     
     --primary-foreground: 60 9.1% 97.8%;
@@ -25,7 +26,7 @@
     --destructive-foreground: 60 9.1% 97.8%;
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
-    --ring: #FF4F2F;
+    --ring: #3B82F6;
     --radius: 0.5rem;
   }
 
@@ -69,3 +70,14 @@ input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
+
+
+/* Primary Blue: #3B82F6 – a vibrant blue used for main UI elements.
+
+White: #FFFFFF – clean background and primary canvas.
+
+Soft Gray: #E5E7EB – light gray used for subtle elements or borders.
+
+Indigo Accent: #6366F1 – used in backgrounds and some highlights.
+
+Dark Text (Navy/Black): #111827 – used for main text and headings. */

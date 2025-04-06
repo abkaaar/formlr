@@ -150,3 +150,70 @@ export async function makeForm(formData: FormData): Promise<void> {
 
     return redirect(`/editor/${form[0].id}`)
 }
+
+// export async function deleteForm(formId: string): Promise<void> {
+//     const userId = await getCurrentUser();
+//     if (!userId || !formId) {
+//         throw new Error("Unauthorized");
+//     }
+
+//     console.log("Attempting to delete form:", formId, "by user:", userId);
+
+//     // Check if form belongs to user
+//     const existingForm = await db.query.form.findFirst({
+//         where: and(
+//             eq(schema.form.id, formId),
+//             eq(schema.form.userId, userId)
+//         )
+//     });
+
+//     if (!existingForm) {
+//         throw new Error("Form not found or unauthorized access");
+//     }
+
+//     // Delete all fields associated with the form
+//     await db.delete(schema.formField)
+//         .where(eq(schema.formField.formId, formId));
+
+//     // Delete the form
+//     const form = await db.delete(schema.form)
+//         .where(and(
+//             eq(schema.form.id, formId),
+//             eq(schema.form.userId, userId)
+//         ))
+//         .returning({ id: schema.form.id });
+
+//     if (!form?.[0]?.id) {
+//         throw new Error("Form deletion failed");
+//     }
+
+//     revalidatePath(`/`);
+//     revalidatePath(`/dashboard`);
+// }
+
+export async function deleteForm(formData: FormData): Promise<void> {
+    const userId = await getCurrentUser();
+    const formId = formData.get("formId");
+  
+    if (!userId || !formId || typeof formId !== "string") {
+      throw new Error("Unauthorized");
+    }
+  
+    const existingForm = await db.query.form.findFirst({
+      where: and(
+        eq(schema.form.id, formId),
+        eq(schema.form.userId, userId)
+      )
+    });
+  
+    if (!existingForm) {
+      throw new Error("Form not found or unauthorized access");
+    }
+  
+    await db.delete(schema.formField).where(eq(schema.formField.formId, formId));
+    await db.delete(schema.form).where(eq(schema.form.id, formId));
+  
+    revalidatePath(`/`);
+    revalidatePath(`/dashboard`);
+  }
+  

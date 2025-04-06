@@ -27,7 +27,7 @@ const Nav = () => {
                 </a>
               </div>
               <div className=" w-2 lg:flex lg:flex-1">
-                <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900" ><Button className='bg-[#FF4F2F] hover:bg-[#CF2101]'>Sign in <span aria-hidden="true" className="ml-2">&rarr;</span></Button></Link>
+                <Link href="/login" className="text-sm font-semibold leading-6 text-gray-900" ><Button className='bg-[#3B82F6] hover:bg-[#6366F1]'>Sign in <span aria-hidden="true" className="ml-2">&rarr;</span></Button></Link>
               </div>
               {/* <div className="flex lg:hidden">
                 <button

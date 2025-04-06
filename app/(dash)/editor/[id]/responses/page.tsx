@@ -51,7 +51,7 @@ export default async function ResponsesPage({
         </SendButton>
       </Header>
       <div className="container lg:max-w-[1250px] pt-5 flex flex-col gap-6 mb-5">
-        <Card className="sm:flex sm:justify-between  border-2 border-[#FF4F2F]">
+        <Card className="sm:flex sm:justify-between  border-2 border-[#3B82F6]">
           <div className="flex flex-col gap-1.5 p-6">
             <h1 className="text-2xl font-bold">{form.name}</h1>
             <p className="whitespace-break-spaces">
@@ -146,7 +146,7 @@ async function ResponsesList({ formId }: { formId: string }) {
                           response.startsWith("/uploads/") || response.startsWith("https://") ? (
                             <React.Fragment key={index}>
                               <a href={response} target="_blank" rel="noopener noreferrer" className="underline font-light">
-                                {response} <span className="text-[#FF4F2F]">View File</span>
+                                {response} <span className="text-[#3B82F6]">View File</span>
                               </a>
                               {index < responses[rowIndex].length - 1 && ", "}
                             </React.Fragment>

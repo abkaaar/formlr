@@ -53,7 +53,7 @@ export default function Home() {
              
               
               <div className="">
-                <Link href="/login" className=" font-semibold leading-6" ><Button className='bg-[#FF4F2F] hover:bg-[#CF2101] p-2'>Sign in <span aria-hidden="true" className="ml-2">&rarr;</span></Button></Link>
+                <Link href="/login" className=" font-semibold leading-6" ><Button className='bg-[#3B82F6] hover:bg-[#6366F1] p-2'>Sign in <span aria-hidden="true" className="ml-2">&rarr;</span></Button></Link>
               </div>
             </nav>
             {/* <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -118,19 +118,10 @@ export default function Home() {
               /> */}
             </div>
             <div className="mx-auto max-w-2xl py-32 sm:py-38 lg:py-36">
-              <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-                <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                  No credit card is required.
-                  {' '}
-                  {/* <a href="#" className="font-semibold text-indigo-600">
-                    <span aria-hidden="true" className="absolute inset-0" />
-                    Read more <span aria-hidden="true">&rarr;</span>
-                  </a> */}
-                </div>
-              </div>
+            
               <div className="text-center">
                 <h1 className="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-                Create <span className='text-[#FF4F2F]'>insightful</span> surveys.
+                Create <span className='text-[#3B82F6]'>insightful</span> surveys.
                 </h1>
                 <p className="mt-8 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
                 Formlr is a survey creation tool that lets users create, distribute, and analyze surveys with ease.
@@ -138,13 +129,11 @@ export default function Home() {
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                   <a
                     href="/register"
-                    className="rounded-md bg-[#FF4F2F] hover:bg-[#CF2101] px-3.5 py-2.5 text-sm font-semibold text-white shadow-smfocus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="rounded-md bg-[#3B82F6] hover:bg-[#6366F1] px-3.5 py-2.5 text-sm font-semibold text-white shadow-smfocus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
-                    Get started
+                    Get started - it's Free
                   </a>
-                  <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
-                    Learn more <span aria-hidden="true">→</span>
-                  </a>
+              
                 </div>
               </div>
             </div>
@@ -165,7 +154,7 @@ export default function Home() {
         {/* grid */}
         <div className="bg-gray-50 py-24 sm:py-32">
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-        <h2 className="text-center text-base/7 font-semibold text-[#FF4F2F]">build faster</h2>
+        <h2 className="text-center text-base/7 font-semibold text-[#3B82F6]">build faster</h2>
         <p className="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl">
           Everything you need to collect & analyze data
         </p>
