@@ -15,6 +15,7 @@ export const getForm = cache(async (formId: string, userId: string) => {
             id: true,
             description: true,
             name: true,
+            acceptingResponses: true,
         }
     })
 })

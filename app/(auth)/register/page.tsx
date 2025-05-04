@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { baseUrl } from "@/utils/const";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
@@ -27,7 +28,7 @@ export default function Register() {
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img
+              <Image
                 alt=""
                 src="/logo.png"
                 className="h-12 w-auto"
@@ -49,7 +50,7 @@ export default function Register() {
                 className="Register-link p-2 w-full text-center"
             >
                 <Button variant={"outline"}>
-                    <img src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000" alt="google" className="h-6 w-6 mr-2" />
+                    <Image src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000" alt="google" className="h-6 w-6 mr-2" />
                      Sign in</Button>
             </Link>
         </div>

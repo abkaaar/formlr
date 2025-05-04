@@ -228,7 +228,7 @@ export function ChoiceFieldDropdown({ field }: FieldProps) {
     useEffect(() => {
         // @ts-expect-error hmmm
         if (!value) document.getElementsByName(field.id)[0].value = ""
-    }, [value])
+    }, [value, field.id])
 
     return (
         <Select

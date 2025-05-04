@@ -3,6 +3,7 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 
 // const navigation = [
 //     { name: 'Product', href: '/' },
@@ -19,7 +20,7 @@ const Nav = () => {
               <div className="flex lg:flex-1">
                 <a href="/" className="-m-1.5 p-1.5">
                   <span className="sr-only">Your Company</span>
-                  <img
+                  <Image
                     alt=""
                     src="/logo.png"
                     className="h-12 w-auto"

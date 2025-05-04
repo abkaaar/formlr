@@ -2,11 +2,11 @@ import { getCurrentUser } from "@/utils/jwt";
 import { Suspense, type PropsWithChildren } from "react";
 import { UserNav } from "./header.client";
 import Link from "next/link";
-import { ClipboardListIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { db, schema } from "@/utils/db";
 import { eq } from "drizzle-orm";
 import { cn } from "@/utils/tw";
+import Image from "next/image";
 
 export default function Header({ children, name = "Forms", justLoading = false, userMenuMargin = true }: PropsWithChildren<{ name?: string, justLoading?: boolean, userMenuMargin?: boolean }>) {
     return (
@@ -20,7 +20,7 @@ export default function Header({ children, name = "Forms", justLoading = false, 
                             href="/dashboard"
                         >
                             {/* <ClipboardListIcon /> */}
-                            <img src="/logo.png" alt="logo" className="w-auto h-12" />
+                            <Image src="/logo.png" alt="logo" className="w-auto h-12" />
                             {/* <h1 className="inline-block whitespace-nowrap font-bold text-lg">
                                 {name}
                             </h1> */}

@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import { getCurrentUser } from "@/utils/jwt";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { SendButton } from "../components";
+import { SendButton, SettingsButton } from "../components";
 import { getForm } from "../tools";
 import {
   Card,
@@ -70,8 +70,12 @@ export default async function ResponsesPage({
                 <Link href={`/editor/${form.id}`}>Edit</Link>
               </Button>
 
-              <Button variant="secondary">Settings</Button>
+              {/* <Button variant="secondary">Settings</Button> */}
+              <SettingsButton formId={form.id} initialAccepting={form.acceptingResponses} />
               <Button variant="secondary">Analytics</Button>
+                  <Button variant="secondary" asChild>
+                <a href={`/api/export/${form.id}`} target="_blank">Export to Excel</a>
+              </Button>
             </div>
           </CardFooter>
         </Card>

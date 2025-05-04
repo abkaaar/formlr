@@ -10,7 +10,6 @@ import { siteName } from "@/utils/const";
 import Link from "next/link";
 import { PencilIcon } from "lucide-react";
 import { getCurrentUser } from "@/utils/jwt";
-import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
     const form = await db.query.form.findFirst({
@@ -47,6 +46,7 @@ export default async function FormPage({ params, noEdit = false }: { params: { i
             id: true,
             name: true,
             description: true,
+            acceptingResponses: true,
         },
         with: {
             fields: {
@@ -74,6 +74,20 @@ export default async function FormPage({ params, noEdit = false }: { params: { i
     })
 
     if (!form) return notFound();
+
+    if (!form.acceptingResponses) {
+        return (
+         <div className="container mx-auto flex flex-col gap-5 items-center justify-center h-screen">
+             <Card className="border-2 border-[#3B82F6] mt-5">
+            <CardHeader>
+              <h1 className="text-2xl font-bold text-[#3B82F6]">Form closed</h1>
+              <p className="text-muted-foreground">This form is no longer accepting responses.</p>
+            </CardHeader>
+          </Card>
+         </div>
+        );
+      }
+      
 
     for (const field of form.fields) {
         if (field.options && field.shuffleOptions) {

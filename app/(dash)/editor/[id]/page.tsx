@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { IsSaving, MakeField, DnD } from "./components.client";
 import { SaveForm } from "@/actions/save-form";
-import { SendButton } from "./components";
+import { SendButton, SettingsButton } from "./components";
 import { getForm } from "./tools";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -51,6 +51,7 @@ export default async function EditForm({ params }: { params: { id: string } }) {
                         Send
                     </Button>
                 </SendButton>
+            
             </Header>
 
             <div className="container lg:max-w-[750px] pt-5 flex flex-col gap-6 mb-5">
@@ -86,10 +87,11 @@ export default async function EditForm({ params }: { params: { id: string } }) {
                                     Responses
                                 </Link>
                             </Button>
+                            <SettingsButton formId={form.id} initialAccepting={form.acceptingResponses} />
 
-                            <Button variant="secondary">
+                            {/* <Button variant="secondary">
                                 Settings
-                            </Button>
+                            </Button> */}
                         </div>
                     </CardFooter>
                 </Card>

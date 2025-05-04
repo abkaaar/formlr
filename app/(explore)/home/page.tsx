@@ -1,7 +1,5 @@
 "use client"
 import { useState } from 'react'
-import { Dialog, DialogPanel } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
 import Footer from '@/components/footer'
@@ -33,7 +31,7 @@ export default function Home() {
               <div className="flex lg:flex-1">
                 <a href="/" className="-m-1.5 p-1.5">
                   <span className="sr-only">Your Company</span>
-                  <img
+                  <Image
                     alt=""
                     src="/logo.png"
                     className="h-12 w-auto"
@@ -62,7 +60,7 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <a href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">Your Company</span>
-                    <img
+                    <Image
                      alt=""
                      src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
                      className="h-8 w-auto"
@@ -172,7 +170,7 @@ export default function Home() {
               </div>
               <div className="relative min-h-[30rem] w-full grow [container-type:inline-size] max-lg:mx-auto max-lg:max-w-sm">
                 <div className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl">
-                  <img
+                  <Image
                     className="size-full object-cover object-top"
                     src="/images/phone.png"
                     alt=""
@@ -194,7 +192,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2">
-                <img
+                <Image
                   className="w-full max-lg:max-w-xs"
                   src="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
                   alt=""
@@ -213,7 +211,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-1 items-center [container-type:inline-size] max-lg:py-6 lg:pb-2">
-                <img
+                <Image
                   className="h-[min(152px,40cqw)] object-cover object-center"
                   src="https://tailwindui.com/plus/img/component-images/bento-03-security.png"
                   alt=""
