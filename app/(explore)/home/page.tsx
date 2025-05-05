@@ -1,18 +1,25 @@
 "use client";
-import { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CheckCircle } from "lucide-react";
 import Nav from "@/components/nav";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Home() {
-
   return (
     <>
-    <Nav/>
-      <section className="bg-[#F0F0F0]">
+      <Nav />
+      <section className="bg-white">
         <div className="relative isolate px-6 pt-1 lg:px-8">
           <div
             aria-hidden="true"
@@ -55,7 +62,6 @@ export default function Home() {
           ></div>
         </div>
       </section>
-
       {/* grid */}
       <section className="bg-gray-50 py-24 sm:py-32">
         <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
@@ -83,7 +89,7 @@ export default function Home() {
                     <Image
                       className="size-full object-cover object-top"
                       src="/images/phone.png"
-                      alt=""
+                      alt="formlr phone"
                       width={1000}
                       height={1000}
                     />
@@ -108,7 +114,7 @@ export default function Home() {
                   <Image
                     className="w-full max-lg:max-w-xs"
                     src="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
-                    alt=""
+                    alt="formlr performance"
                     width={1000}
                     height={1000}
                   />
@@ -132,7 +138,7 @@ export default function Home() {
                   <Image
                     className="h-[min(152px,40cqw)] object-cover object-center"
                     src="https://tailwindui.com/plus/img/component-images/bento-03-security.png"
-                    alt=""
+                    alt="formlr security"
                     width={1000}
                     height={1000}
                   />
@@ -229,6 +235,245 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <section id="testimonials" className="bg-slate-50 py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Loved by thousands of teams
+            </h2>
+            <p className="text-lg text-primary max-w-2xl mx-auto">
+              See what our customers have to say about Formlr.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="bg-white border-none shadow-md">
+              <CardHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
+                    <span className="font-bold text-primary">JD</span>
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Jane Doe</CardTitle>
+                    <CardDescription>
+                      Marketing Director, TechCorp
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600">
+                  "Formlr has transformed how we collect customer feedback.
+                  The interface is intuitive and the analytics are incredibly
+                  insightful."
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white border-none shadow-md">
+              <CardHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
+                    <span className="font-bold text-primary">MS</span>
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Michael Smith</CardTitle>
+                    <CardDescription>HR Manager, GlobalCo</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600">
+                  "We use Formlr for all our employee engagement surveys.
+                  The team collaboration features are fantastic and have
+                  streamlined our process."
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white border-none shadow-md">
+              <CardHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center">
+                    <span className="font-bold text-primary">AL</span>
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Alex Lee</CardTitle>
+                    <CardDescription>
+                      Product Manager, StartupInc
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-slate-600">
+                  "The depth of analytics Formlr provides has been crucial
+                  for our product development decisions. I can't imagine going
+                  back to our old tools."
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className=" bg-white mx-auto py-16 md:py-24">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            Simple, transparent pricing
+          </h2>
+          <p className="text-lg text-primary max-w-2xl mx-auto">
+            Choose the plan that's right for you and start collecting valuable
+            insights today.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <Card className=" border-2 border-primary text-primary bg-transparent shadow-md hover:shadow-md transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-xl">Basic</CardTitle>
+              <div className="mt-4">
+                <span className="text-4xl font-bold">$0</span>
+                <span className="text-slate-700">/month</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>Up to 3 surveys</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>100 responses per survey</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>Basic analytics</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>Email support</span>
+                </li>
+              </ul>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full bg-primary hover:bg-primary">
+                Get Started
+              </Button>
+            </CardFooter>
+          </Card>
+
+          <Card className="border-none bg-primary shadow-lg relative">
+            <div className="absolute top-0 right-0 bg-slate-800 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+              POPULAR
+            </div>
+            <CardHeader>
+              <CardTitle className="text-xl">Professional</CardTitle>
+              <div className="mt-4">
+                <span className="text-4xl font-bold">$29</span>
+                <span className="text-slate-200">/month</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-white" />
+                  <span>Unlimited surveys</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-white" />
+                  <span>1,000 responses per survey</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-white" />
+                  <span>Advanced analytics</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-white" />
+                  <span>Priority support</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-white" />
+                  <span>Custom branding</span>
+                </li>
+              </ul>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full bg-white text-primary hover:text-primary hover:bg-white">
+                Get Started
+              </Button>
+            </CardFooter>
+          </Card>
+
+          <Card className="border-2 border-primary text-primary bg-transparent shadow-sm hover:shadow-md transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-xl">Enterprise</CardTitle>
+              <div className="mt-4">
+                <span className="text-4xl font-bold">$99</span>
+                <span className="text-slate-700">/month</span>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>Unlimited everything</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>Advanced security</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>Dedicated account manager</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>API access</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                  <span>SSO integration</span>
+                </li>
+              </ul>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full bg-primary hover:bg-primary">
+                Contact Sales
+              </Button>
+            </CardFooter>
+          </Card>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-slate-900 py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to start collecting valuable insights?
+          </h2>
+          <p className="text-lg text-purple-100 mb-8 max-w-2xl mx-auto">
+            Join thousands of companies that trust Formlr for their feedback and
+            research needs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button className="bg-white text-primary hover:bg-purple-50 px-8 py-6 text-lg">
+              Start your free trial
+            </Button>
+            <Button
+              variant="outline"
+              className="border-white text-white hover:bg-primary px-8 py-6 text-lg"
+            >
+              Schedule a demo
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </>
   );
