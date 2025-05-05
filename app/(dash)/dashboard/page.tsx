@@ -98,8 +98,8 @@ async function FormsList({ search }: { search?: string }) {
       <input type="hidden" name="formId" value={form.id} />
         <div className="h-auto flex-col">
           <button type="submit" className="">
-            <IsLoading className="text-destructive w-4 h-4">
-            <Trash className="w-4 h-4 text-destructive hover:text-destructive/80" />
+            <IsLoading className="text-[#3b82f6] w-4 h-4">
+            <Trash className="w-4 h-4 text-[#3b82f6] hover:text-[#3b82f6]/80" />
             </IsLoading>
           </button>
         </div>

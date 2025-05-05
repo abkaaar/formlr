@@ -24,6 +24,7 @@ const Nav = () => {
                     alt=""
                     src="/logo.png"
                     className="h-12 w-auto"
+                    height={100} width={100}
                   />
                 </a>
               </div>

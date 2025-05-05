@@ -35,6 +35,8 @@ export default function Home() {
                     alt=""
                     src="/logo.png"
                     className="h-12 w-auto"
+                    width={100}
+                    height={100}
                   />
                 </a>
               </div>
@@ -174,6 +176,8 @@ export default function Home() {
                     className="size-full object-cover object-top"
                     src="/images/phone.png"
                     alt=""
+                    width={1000}
+                    height={1000}
                   />
                 </div>
               </div>
@@ -196,6 +200,8 @@ export default function Home() {
                   className="w-full max-lg:max-w-xs"
                   src="https://tailwindui.com/plus/img/component-images/bento-03-performance.png"
                   alt=""
+                  width={1000}
+                  height={1000}
                 />
               </div>
             </div>
@@ -215,6 +221,8 @@ export default function Home() {
                   className="h-[min(152px,40cqw)] object-cover object-center"
                   src="https://tailwindui.com/plus/img/component-images/bento-03-security.png"
                   alt=""
+                  width={1000}
+                  height={1000}
                 />
               </div>
             </div>

@@ -20,7 +20,7 @@ export default function Header({ children, name = "Forms", justLoading = false, 
                             href="/dashboard"
                         >
                             {/* <ClipboardListIcon /> */}
-                            <Image src="/logo.png" alt="logo" className="w-auto h-12" />
+                            <Image src="/logo.png" alt="logo" className="w-auto h-12"  height={100} width={100} />
                             {/* <h1 className="inline-block whitespace-nowrap font-bold text-lg">
                                 {name}
                             </h1> */}

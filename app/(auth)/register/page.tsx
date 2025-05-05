@@ -32,6 +32,8 @@ export default function Register() {
                 alt=""
                 src="/logo.png"
                 className="h-12 w-auto"
+                height={100}
+                width={100}
               />
             </a>
           </div>
@@ -50,7 +52,10 @@ export default function Register() {
                 className="Register-link p-2 w-full text-center"
             >
                 <Button variant={"outline"}>
-                    <Image src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000" alt="google" className="h-6 w-6 mr-2" />
+                    <Image src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000" alt="google" className="h-6 w-6 mr-2"
+                      height={100}
+                      width={100}
+                       />
                      Sign in</Button>
             </Link>
         </div>
