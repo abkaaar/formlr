@@ -1,6 +1,7 @@
 import Nav from "@/components/nav";
 import { SignInForm } from "@/components/signin-form";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { baseUrl } from "@/utils/const";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -25,9 +26,11 @@ export default function Register() {
     <>
       <Nav />
       <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
-        <div className="w-full max-w-sm">
+    <Card className="w-full max-w-sm shadow-md border border-slate-800 p-10">
+    <div className="w-full max-w-sm">
           <SignInForm googleOauthUrl={googleOauthUrl} />
         </div>
+    </Card>
       </div>
     </>
   );

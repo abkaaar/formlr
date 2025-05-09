@@ -1,6 +1,7 @@
 import Footer from "@/components/footer";
 import Nav from "@/components/nav";
 import { SignInForm } from "@/components/signin-form";
+import { Card } from "@/components/ui/card";
 import { baseUrl } from "@/utils/const";
 import type { Metadata } from "next";
 
@@ -23,9 +24,11 @@ export default function Login() {
     <>
       <Nav />
       <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
+    <Card className="w-full max-w-sm shadow-md border border-slate-800 p-10">
         <div className="w-full max-w-sm">
           <SignInForm googleOauthUrl={googleOauthUrl} />
         </div>
+      </Card>
       </div>
 
       <Footer />
