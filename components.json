@@ -10,8 +10,5 @@
     "cssVariables": true,
     "prefix": ""
   },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/utils/tw"
-  }
+  "aliases": { "components": "@/components", "utils": "@/utils/tw" }
 }

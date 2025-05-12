@@ -14,18 +14,16 @@ export default function Header({ children, name = "Forms", justLoading = false, 
             <header className="flex h-16 w-full items-center gap-4">
 
                 <nav className={cn("w-auto", userMenuMargin && "me-auto")}>
-                    <Button asChild variant="ghost">
-                        <Link
-                            className="flex items-center gap-2 hover:bg-transparent -ms-3"
-                            href="/dashboard"
-                        >
-                            {/* <ClipboardListIcon /> */}
-                            <Image src="/logo.png" alt="logo" className="w-auto h-12"  height={100} width={100} />
-                            {/* <h1 className="inline-block whitespace-nowrap font-bold text-lg">
-                                {name}
-                            </h1> */}
-                        </Link>
-                    </Button>
+                 {/* logo */}
+                 <Link href="/" className="flex items-center">
+                    <Image
+                        src="/logo.png"
+                        alt="Logo"
+                        width={100}
+                        height={100}
+                        className="rounded-full"
+                    />
+                    </Link>
                 </nav>
 
                 {children}
@@ -42,7 +40,7 @@ export default function Header({ children, name = "Forms", justLoading = false, 
     )
 };
 
-function UserMenuFallback() {
+export function UserMenuFallback() {
     return (
         <div className="h-8 w-8 rounded-full bg-secondary animate-pulse" />
     )

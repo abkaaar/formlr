@@ -2,7 +2,7 @@ import Header from "@/components/header";
 import { getCurrentUser } from "@/utils/jwt";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { SendButton, SettingsButton } from "../components";
+import { FormSidebar, SendButton, SettingsButton } from "../components";
 import { getForm } from "../tools";
 import {
   Card,
@@ -43,13 +43,17 @@ export default async function ResponsesPage({
   if (!form) notFound();
 
   return (
-    <div className="min-h-screen bg-background" vaul-drawer-wrapper="">
+    <>
       <Header userMenuMargin={false} name={form.name}>
         {/* more buttons */}
         <SendButton formId={form.id}>
           <Button className="ms-auto" variant={"outline"}>Send</Button>
         </SendButton>
       </Header>
+     <div className="flex min-h-screen bg-background" vaul-drawer-wrapper="">
+      <FormSidebar  formId={form.id} initialAccepting={form.acceptingResponses} />
+
+    
       <div className="container lg:max-w-[1250px] pt-5 flex flex-col gap-6 mb-5">
         <Card className="sm:flex sm:justify-between  border-2 border-[#3B82F6]">
           <div className="flex flex-col gap-1.5 p-6">
@@ -84,7 +88,9 @@ export default async function ResponsesPage({
           <ResponsesList formId={form.id} />
         </Suspense>
       </div>
-    </div>
+    </div>  
+    </>
+ 
   );
 }
 

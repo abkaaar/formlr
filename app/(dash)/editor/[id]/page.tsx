@@ -11,7 +11,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { IsSaving, MakeField, DnD } from "./components.client";
 import { SaveForm } from "@/actions/save-form";
-import { SendButton, SettingsButton } from "./components";
+import { FormSidebar, SendButton, SettingsButton } from "./components";
 import { getForm } from "./tools";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -37,8 +37,8 @@ export default async function EditForm({ params }: { params: { id: string } }) {
     if (!form) notFound()
 
     return (
-        <form className="min-h-screen bg-background" vaul-drawer-wrapper="" action={SaveForm} id="form">
-            <Header userMenuMargin={false} name={form.name}>
+        <>
+               <Header userMenuMargin={false} name={form.name}>
                 <IsSaving lastSaved={form.lastModified || new Date()} />
                 {/* more buttons */}
                 <Button variant="secondary" asChild>
@@ -46,13 +46,18 @@ export default async function EditForm({ params }: { params: { id: string } }) {
                         Preview
                     </Link>
                 </Button>
-                <SendButton formId={form.id}>
+                {/* <SendButton formId={form.id}>
                     <Button className="ms-auto sm:ms-0" variant={"outline"}>
                         Send
                     </Button>
-                </SendButton>
+                </SendButton> */}
             
             </Header>
+        
+      <div className="flex">
+            <FormSidebar formId={form.id} initialAccepting={form.acceptingResponses} />
+            <form className="min-h-screen bg-background w-full" vaul-drawer-wrapper="" action={SaveForm} id="form">
+     
 
             <div className="container lg:max-w-[750px] pt-5 flex flex-col gap-6 mb-5">
                 {/* <h1>Edit form: {params.id}</h1> */}
@@ -76,17 +81,17 @@ export default async function EditForm({ params }: { params: { id: string } }) {
                     <CardFooter>
                         {/* buttons */}
                         <div className="flex gap-4">
-                            <SendButton formId={form.id}>
+                            {/* <SendButton formId={form.id}>
                                 <Button variant="secondary">
                                     Share
                                 </Button>
-                            </SendButton>
-
+                            </SendButton> */}
+{/* 
                             <Button variant="secondary" asChild>
                                 <Link href={`/editor/${form.id}/responses`}>
                                     Responses
                                 </Link>
-                            </Button>
+                            </Button> */}
                             <SettingsButton formId={form.id} initialAccepting={form.acceptingResponses} />
 
                             {/* <Button variant="secondary">
@@ -108,6 +113,10 @@ export default async function EditForm({ params }: { params: { id: string } }) {
 
             </div>
         </form>
+        </div>  
+        </>
+        
+       
     )
 }
 
