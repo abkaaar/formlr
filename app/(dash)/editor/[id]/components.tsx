@@ -262,7 +262,7 @@ function SidebarItem({
           : "text-indigo-100 hover:bg-indigo-600"
       }`}
     >
-      {/* <span className="flex-shrink-0">{icon}</span> */}
+      <span className="flex-shrink-0">{icon}</span>
       {isExpanded && <span className="ml-3">{label}</span>}
     </div>
   );
