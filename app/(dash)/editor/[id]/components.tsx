@@ -124,19 +124,18 @@ export function SettingsButton({
 }
 
 
-// sidebar
+
+// Sidebar
 export function FormSidebar({
   formId,
   initialAccepting,
   activeTab,
-  children,
 }: {
   formId: string;
   initialAccepting: boolean;
   activeTab?: string;
-  children?: React.ReactNode;
 }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const router = useRouter();
 
   const toggleSidebar = () => {
@@ -163,76 +162,72 @@ export function FormSidebar({
       icon: <BarChart2 size={20} />,
       href: `/forms/${formId}/analytics`,
     },
-
   ];
 
   return (
     <div className="flex flex-col">
-      {/* Sidebar */}
-         <div className="flex items-center p-4 fixed z-1000">
-          <button
-            onClick={toggleSidebar}
-            className="p-2 rounded-lg bg-indigo-600"
-          >
-            {isSidebarOpen ? <X size={20} /> : <LayoutDashboard size={20} />}
-          </button>
-        </div>
-      <div
-        className={`${
-          isSidebarOpen ? "mt-5 w-40 rounded-xl " : "w-0 mt-20"
-        } bg-indigo-700 text-white transition-all duration-300 ease-in-out fixed top-28 h-screen z-10`}
-      >
-
-        <nav className="mt-6 px-2">
-          {/* Dashboard link as first item */}
-          <SidebarItem
-            icon={<LayoutDashboard size={20} />}
-            label="Dashboard"
-            isExpanded={isSidebarOpen}
-            isActive={false}
-            href="/dashboard"
-          />
-
-          {/* Form specific tabs */}
-          {tabs.map((tab) => (
-            <SidebarItem
-              key={tab.id}
-              icon={tab.icon}
-              label={tab.label}
-              isExpanded={isSidebarOpen}
-              isActive={activeTab === tab.id}
-              href={tab.href}
-           
-            />
-          ))}
-
-          {/* Send button in sidebar */}
-          <div className="mt-6">
-            <SendButton formId={formId}>
-              <SidebarItem
-                icon={<Send size={20} />}
-                label="Share Form"
-                isExpanded={isSidebarOpen}
-                isActive={false}
-                isButton
-              />
-            </SendButton>
-          </div>
-          <div className="">
-            <SettingsButton formId={formId} initialAccepting={initialAccepting}>
-              <SidebarItem
-                icon={<Settings size={20} />}
-                label="Settings"
-                isExpanded={isSidebarOpen}
-                isActive={false}
-                isButton
-              />
-            </SettingsButton>
-          </div>
-        </nav>
+      {/* Toggle Button */}
+      <div className="flex items-center p-4 fixed z-50">
+        <button
+          onClick={toggleSidebar}
+          className="p-2 rounded-lg bg-indigo-600 text-white"
+        >
+          {isSidebarOpen ? <X size={20} /> : <LayoutDashboard size={20} />}
+        </button>
       </div>
 
-      {/* Main Content */}
+      {/* Sidebar */}
+      {isSidebarOpen && (
+        <div className="mt-5 w-40 rounded-xl bg-indigo-700 text-white transition-all duration-300 ease-in-out fixed top-28 h-screen z-40">
+          <nav className="mt-6 px-2">
+            {/* Dashboard link */}
+            <SidebarItem
+              icon={<LayoutDashboard size={20} />}
+              label="Dashboard"
+              isActive={false}
+              href="/dashboard"
+            />
+
+            {/* Form specific tabs */}
+            {tabs.map((tab) => (
+              <SidebarItem
+                key={tab.id}
+                icon={tab.icon}
+                label={tab.label}
+                isActive={activeTab === tab.id}
+                href={tab.href}
+              />
+            ))}
+
+            {/* Share Form */}
+            <div className="mt-6">
+              <SendButton formId={formId}>
+                <SidebarItem
+                  icon={<Send size={20} />}
+                  label="Share Form"
+                  isActive={false}
+                  isButton
+                />
+              </SendButton>
+            </div>
+
+            {/* Settings */}
+            <div>
+              <SettingsButton
+                formId={formId}
+                initialAccepting={initialAccepting}
+              >
+                <SidebarItem
+                  icon={<Settings size={20} />}
+                  label="Settings"
+                  isActive={false}
+                  isButton
+                />
+              </SettingsButton>
+            </div>
+          </nav>
+        </div>
+      )}
     </div>
   );
 }
@@ -240,7 +235,6 @@ export function FormSidebar({
 function SidebarItem({
   icon,
   label,
-  isExpanded,
   isActive,
   href,
   onClick,
@@ -248,7 +242,6 @@ function SidebarItem({
 }: {
   icon: JSX.Element;
   label: string;
-  isExpanded: boolean;
   isActive: boolean;
   href?: string;
   onClick?: () => void;
@@ -263,7 +256,7 @@ function SidebarItem({
       }`}
     >
       <span className="flex-shrink-0">{icon}</span>
-      {isExpanded && <span className="ml-3">{label}</span>}
+      <span className="ml-3">{label}</span>
     </div>
   );
 
