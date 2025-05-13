@@ -148,7 +148,7 @@ export function FormSidebar({
       id: "edit",
       label: "Edit Form",
       icon: <FileText size={20} />,
-      href: `/forms/${formId}/edit`,
+      href: `/editor/${formId}`,
     },
     {
       id: "responses",
