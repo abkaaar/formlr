@@ -31,14 +31,131 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     } satisfies Metadata
 }
 
+// export default async function EditForm({ params }: { params: { id: string } }) {
+//     const userId = await getCurrentUser()
+//     const form = await getForm(params.id, userId!)
+//     if (!form) notFound()
+
+//     return (
+//         <>
+//                <Header userMenuMargin={false} name={form.name}>
+//                 <IsSaving lastSaved={form.lastModified || new Date()} />
+//                 {/* more buttons */}
+//                 <Button variant="secondary" asChild>
+//                     <Link href={`/f/${form.id}`} className="hidden sm:flex ms:auto">
+//                         Preview
+//                     </Link>
+//                 </Button>
+//                 {/* <SendButton formId={form.id}>
+//                     <Button className="ms-auto sm:ms-0" variant={"outline"}>
+//                         Send
+//                     </Button>
+//                 </SendButton> */}
+            
+//             </Header>
+        
+//       <div className="flex">
+//             <FormSidebar formId={form.id} initialAccepting={form.acceptingResponses} />
+//             <form className="min-h-screen bg-background w-full" vaul-drawer-wrapper="" action={SaveForm} id="form">
+     
+
+//             <div className="container lg:max-w-[750px] pt-5 flex flex-col gap-6 mb-5">
+//                 {/* <h1>Edit form: {params.id}</h1> */}
+//                 <Card className="border-2 border-[#3B82F6]">
+//                     <CardHeader>
+//                         <input type="hidden" name="form:id" value={form.id} />
+//                         <Input
+//                             defaultValue={form.name}
+//                             className="h-14 text-2xl font-semibold leading-none tracking-tight"
+//                             placeholder="Untitled form"
+//                             name="form:name"
+//                         />
+//                         <AutosizeTextarea
+//                             defaultValue={form.description || ""}
+//                             className="text-sm text-muted-foreground focus:text-foreground"
+//                             placeholder="Form description"
+//                             name="form:description"
+//                         />
+//                     </CardHeader>
+
+//                     <CardFooter>
+//                         {/* buttons */}
+//                         <div className="flex gap-4">
+//                             {/* <SendButton formId={form.id}>
+//                                 <Button variant="secondary">
+//                                     Share
+//                                 </Button>
+//                             </SendButton> */}
+// {/* 
+//                             <Button variant="secondary" asChild>
+//                                 <Link href={`/editor/${form.id}/responses`}>
+//                                     Responses
+//                                 </Link>
+//                             </Button> */}
+//                             <Button variant="secondary" type="submit">
+//                                 Save
+//                             </Button>
+                                
+//                             <SettingsButton formId={form.id} initialAccepting={form.acceptingResponses} />
+
+//                             {/* <Button variant="secondary">
+//                                 Settings
+//                             </Button> */}
+//                         </div>
+//                     </CardFooter>
+//                 </Card>
+
+//                 <Suspense fallback={<LoadingFields />}>
+//                     <Fields formId={form.id} />
+//                 </Suspense>
+
+//                 <MakeField formId={form.id} skeleton={<LoadingFields />}>
+//                     <Button variant="outline" className="self-start">
+//                         Add question
+//                     </Button>
+//                 </MakeField>
+
+//             </div>
+//         </form>
+//         </div>  
+//         </>
+        
+       
+//     )
+// }
+
+// async function Fields({ formId }: { formId: string }) {
+//     const fields = await db.query.formField.findMany({
+//         where: eq(schema.formField.formId, formId),
+//         orderBy: asc(schema.formField.index),
+//         columns: {
+//             id: true,
+//             formId: true,
+//             name: true,
+//             options: true,
+//             required: true,
+//             description: true,
+//             type: true,
+//             optionsStyle: true,
+//             textSize: true,
+//             shuffleOptions: true,
+//             index: true,
+//             otherOption: true,
+//         }
+//     })
+
+//     return (
+//         <DnD fields={fields} />
+//     )
+// }
 export default async function EditForm({ params }: { params: { id: string } }) {
     const userId = await getCurrentUser()
     const form = await getForm(params.id, userId!)
     if (!form) notFound()
 
     return (
-        <>
-               <Header userMenuMargin={false} name={form.name}>
+        <form className="min-h-screen bg-background" vaul-drawer-wrapper="" action={SaveForm} id="form">
+            <Header userMenuMargin={false} name={form.name}>
                 <IsSaving lastSaved={form.lastModified || new Date()} />
                 {/* more buttons */}
                 <Button variant="secondary" asChild>
@@ -47,21 +164,15 @@ export default async function EditForm({ params }: { params: { id: string } }) {
                     </Link>
                 </Button>
                 {/* <SendButton formId={form.id}>
-                    <Button className="ms-auto sm:ms-0" variant={"outline"}>
+                    <Button className="ms-auto sm:ms-0">
                         Send
                     </Button>
                 </SendButton> */}
-            
             </Header>
-        
-      <div className="flex">
-            <FormSidebar formId={form.id} initialAccepting={form.acceptingResponses} />
-            <form className="min-h-screen bg-background w-full" vaul-drawer-wrapper="" action={SaveForm} id="form">
-     
-
+        <FormSidebar formId={form.id} initialAccepting={form.acceptingResponses} />
             <div className="container lg:max-w-[750px] pt-5 flex flex-col gap-6 mb-5">
                 {/* <h1>Edit form: {params.id}</h1> */}
-                <Card className="border-2 border-[#3B82F6]">
+                <Card className="border-t-4 border-t-primary">
                     <CardHeader>
                         <input type="hidden" name="form:id" value={form.id} />
                         <Input
@@ -80,24 +191,23 @@ export default async function EditForm({ params }: { params: { id: string } }) {
 
                     <CardFooter>
                         {/* buttons */}
-                        <div className="flex gap-4">
-                            {/* <SendButton formId={form.id}>
+                        {/* <div className="flex gap-4">
+                            <SendButton formId={form.id}>
                                 <Button variant="secondary">
                                     Share
                                 </Button>
-                            </SendButton> */}
-{/* 
+                            </SendButton>
+
                             <Button variant="secondary" asChild>
                                 <Link href={`/editor/${form.id}/responses`}>
                                     Responses
                                 </Link>
-                            </Button> */}
-                            <SettingsButton formId={form.id} initialAccepting={form.acceptingResponses} />
+                            </Button>
 
-                            {/* <Button variant="secondary">
+                            <Button variant="secondary">
                                 Settings
-                            </Button> */}
-                        </div>
+                            </Button>
+                        </div> */}
                     </CardFooter>
                 </Card>
 
@@ -106,17 +216,13 @@ export default async function EditForm({ params }: { params: { id: string } }) {
                 </Suspense>
 
                 <MakeField formId={form.id} skeleton={<LoadingFields />}>
-                    <Button variant="outline" className="self-start">
+                    <Button variant="default" className="self-start">
                         Add question
                     </Button>
                 </MakeField>
 
             </div>
         </form>
-        </div>  
-        </>
-        
-       
     )
 }
 

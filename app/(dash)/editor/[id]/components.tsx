@@ -170,7 +170,7 @@ export function FormSidebar({
       <div className="flex items-center p-4 fixed z-50">
         <button
           onClick={toggleSidebar}
-          className="p-2 rounded-lg bg-indigo-600 text-white"
+          className="p-2 rounded-lg bg-primary text-white"
         >
           {isSidebarOpen ? <X size={20} /> : <LayoutDashboard size={20} />}
         </button>
@@ -178,7 +178,7 @@ export function FormSidebar({
 
       {/* Sidebar */}
       {isSidebarOpen && (
-        <div className="mt-5 w-40 rounded-xl bg-indigo-700 text-white transition-all duration-300 ease-in-out fixed top-28 h-screen z-40">
+        <div className="mt-5 w-40 rounded-xl bg-primary text-white transition-all duration-300 ease-in-out fixed top-28 h-screen z-40">
           <nav className="mt-6 px-2">
             {/* Dashboard link */}
             <SidebarItem
@@ -251,8 +251,8 @@ function SidebarItem({
     <div
       className={`flex items-center w-full p-3 mb-2 rounded-lg transition-colors ${
         isActive
-          ? "bg-indigo-800 text-white"
-          : "text-indigo-100 hover:bg-indigo-600"
+          ? "bg-primary text-white"
+          : "text-indigo-100 hover:bg-primary"
       }`}
     >
       <span className="flex-shrink-0">{icon}</span>

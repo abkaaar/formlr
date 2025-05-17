@@ -32,7 +32,6 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   } satisfies Metadata;
 }
 
-
 export default async function ResponsesPage({
   params,
 }: {
@@ -47,50 +46,58 @@ export default async function ResponsesPage({
       <Header userMenuMargin={false} name={form.name}>
         {/* more buttons */}
         <SendButton formId={form.id}>
-          <Button className="ms-auto" variant={"outline"}>Send</Button>
+          <Button className="ms-auto" variant={"outline"}>
+            Send
+          </Button>
         </SendButton>
       </Header>
-     <div className="flex min-h-screen bg-background" vaul-drawer-wrapper="">
-      <FormSidebar  formId={form.id} initialAccepting={form.acceptingResponses} />
+      <div className="flex min-h-screen bg-background" vaul-drawer-wrapper="">
+        <FormSidebar
+          formId={form.id}
+          initialAccepting={form.acceptingResponses}
+        />
 
-    
-      <div className="container lg:max-w-[1250px] pt-5 flex flex-col gap-6 mb-5">
-        <Card className="sm:flex sm:justify-between  border-2 border-[#3B82F6]">
-          <div className="flex flex-col gap-1.5 p-6">
-            <h1 className="text-2xl font-bold">{form.name}</h1>
-            <p className="whitespace-break-spaces">
-              View the responses to the form.
-            </p>
-          </div>
+        <div className="container lg:max-w-[1250px] pt-5 flex flex-col gap-6 mb-5">
+          <Card className="sm:flex sm:justify-between  border-2 border-[#3B82F6]">
+            <div className="flex flex-col gap-1.5 p-6">
+              <h1 className="text-2xl font-bold">{form.name}</h1>
+              <p className="whitespace-break-spaces">
+                View the responses to the form.
+              </p>
+            </div>
 
-          <CardFooter>
-            {/* buttons */}
-            <div className="flex gap-4">
-              <SendButton formId={form.id}>
+            <CardFooter>
+              {/* buttons */}
+              <div className="grid sm:grid-cols-2 gap-4 p-4">
+                {/* <SendButton formId={form.id}>
                 <Button variant="secondary">Share</Button>
-              </SendButton>
-
+              </SendButton> */}
+                {/* 
               <Button variant="secondary" asChild>
                 <Link href={`/editor/${form.id}`}>Edit</Link>
-              </Button>
+              </Button> */}
 
-              {/* <Button variant="secondary">Settings</Button> */}
-              <SettingsButton formId={form.id} initialAccepting={form.acceptingResponses} />
-              <Button variant="secondary">Analytics</Button>
-                  <Button variant="secondary" asChild>
-                <a href={`/api/export/${form.id}`} target="_blank">Export to Excel</a>
-              </Button>
-            </div>
-          </CardFooter>
-        </Card>
+                {/* <Button variant="secondary">Settings</Button> */}
+                <SettingsButton
+                  formId={form.id}
+                  initialAccepting={form.acceptingResponses}
+                />
+                <Button variant="secondary">Analytics & Visualization</Button>
+                <Button variant="secondary" asChild>
+                  <a href={`/api/export/${form.id}`} target="_blank">
+                    Export to Excel
+                  </a>
+                </Button>
+              </div>
+            </CardFooter>
+          </Card>
 
-        <Suspense fallback={<LoadingResponsesList />}>
-          <ResponsesList formId={form.id} />
-        </Suspense>
+          <Suspense fallback={<LoadingResponsesList />}>
+            <ResponsesList formId={form.id} />
+          </Suspense>
+        </div>
       </div>
-    </div>  
     </>
- 
   );
 }
 
@@ -152,11 +159,20 @@ async function ResponsesList({ formId }: { formId: string }) {
                     {responses[rowIndex] ? (
                       Array.isArray(responses[rowIndex]) ? (
                         // Handle array of responses
-                        responses[rowIndex].map((response, index) => (
-                          response.startsWith("/uploads/") || response.startsWith("https://") ? (
+                        responses[rowIndex].map((response, index) =>
+                          response.startsWith("/uploads/") ||
+                          response.startsWith("https://") ? (
                             <React.Fragment key={index}>
-                              <a href={response} target="_blank" rel="noopener noreferrer" className="underline font-light">
-                                {response} <span className="text-[#3B82F6]">View File</span>
+                              <a
+                                href={response}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline font-light"
+                              >
+                                {response}{" "}
+                                <span className="text-[#3B82F6]">
+                                  View File
+                                </span>
                               </a>
                               {index < responses[rowIndex].length - 1 && ", "}
                             </React.Fragment>
@@ -166,14 +182,12 @@ async function ResponsesList({ formId }: { formId: string }) {
                               {index < responses[rowIndex].length - 1 && ", "}
                             </React.Fragment>
                           )
-                        ))
-                      ) : (
-                        // Handle single response
-                        typeof responses[rowIndex] === "boolean" ? (
-                          <span>{responses[rowIndex] ? "Yes" : "No"}</span>
-                        ) : (
-                          <span>{responses[rowIndex]}</span>
                         )
+                      ) : // Handle single response
+                      typeof responses[rowIndex] === "boolean" ? (
+                        <span>{responses[rowIndex] ? "Yes" : "No"}</span>
+                      ) : (
+                        <span>{responses[rowIndex]}</span>
                       )
                     ) : (
                       "No response"
@@ -187,7 +201,6 @@ async function ResponsesList({ formId }: { formId: string }) {
     </div>
   );
 }
-
 
 async function ResponsesListData({ fieldId }: { fieldId: string }) {
   const responses = await db.query.formSubmissionFieldValue.findMany({
@@ -214,7 +227,7 @@ async function ResponsesListData({ fieldId }: { fieldId: string }) {
 
       {Array.from(map).map(([value, count]) => (
         <li key={value}>
-          {(value.startsWith("/uploads/") || value.startsWith("https://")) ? ( // Check if value is a file path
+          {value.startsWith("/uploads/") || value.startsWith("https://") ? ( // Check if value is a file path
             <a href={value} target="_blank" rel="noopener noreferrer">
               View File
             </a>
@@ -227,5 +240,3 @@ async function ResponsesListData({ fieldId }: { fieldId: string }) {
     </ul>
   );
 }
-
-
