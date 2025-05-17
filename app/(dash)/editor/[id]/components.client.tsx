@@ -10,7 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/utils/tw";
-import { SquareIcon, CircleIcon, XIcon, CalendarIcon, ArrowUpIcon, ArrowDownIcon, MoreVerticalIcon, Trash2Icon, GripHorizontalIcon, FileIcon } from "lucide-react";
+import { SquareIcon, CircleIcon, XIcon, CalendarIcon, MoreVerticalIcon, Trash2Icon, GripHorizontalIcon, FileIcon } from "lucide-react";
 import React, { useEffect, useOptimistic, useState, startTransition, type PropsWithChildren } from "react";
 import { useFormStatus } from "react-dom";
 import { Reorder, useDragControls } from "framer-motion"

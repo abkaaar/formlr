@@ -45,7 +45,7 @@ export default function Home() {
         <div className="flex flex-col gap-8 mx-auto py-32 sm:py-38 lg:py-36">
           <div className="flex flex-col items-center justify-center gap-8 text-center max-w-2xl mx-auto">
             <h1 className="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-              Create <span className="text-primary">insightful</span> surveys.
+            Streamline Your Data Collection and Get  <span className="text-primary">Academic Insights</span>  Faster & Smarter.
             </h1>
             <p className="text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
               Formlr is a survey creation tool that lets users create,
@@ -96,7 +96,7 @@ export default function Home() {
                     <PieChart className="h-6 w-6 text-blue-600" />
                   </div>
                   <h3 className="text-xl font-semibold text-slate-900">
-                    Customer Insights
+                    Academic Insights
                   </h3>
                 </div>
                 <p className="text-slate-600 mb-4">
