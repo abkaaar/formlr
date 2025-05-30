@@ -4,12 +4,6 @@ import { db, schema } from "@/utils/db";
 import { eq, and } from "drizzle-orm";
 import { getCurrentUser } from "@/utils/jwt";
 
-// Required for edge function streaming:
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
 export async function POST(
   req: Request,
