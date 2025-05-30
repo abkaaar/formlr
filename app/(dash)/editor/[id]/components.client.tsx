@@ -16,6 +16,7 @@ import { useFormStatus } from "react-dom";
 import { Reorder, useDragControls } from "framer-motion"
 import TooltipText from "@/components/tooltip-text";
 import { useDebouncedCallback } from 'use-debounce';
+import { useTransition } from "react";
 
 
 export function IsSaving({ lastSaved }: { lastSaved: Date }) {
@@ -420,6 +421,56 @@ export function DnD({ fields }: { fields: FieldProps["field"][] }) {
         </Reorder.Group>
     )
 }
+
+
+export function ImportButton({ formId }: { formId: string }) {
+  const [isPending, startTransition] = useTransition();
+
+  const handleImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch(`/api/form/${formId}/import`, {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.error || "Import failed");
+      } else {
+        alert("Import successful");
+        // Optionally reload
+        location.reload();
+      }
+    } catch (err) {
+      alert("Error importing file.");
+    }
+  };
+
+  return (
+    <>
+      <label htmlFor="import-file">
+        <Button asChild disabled={isPending}>
+          <span>{isPending ? "Importing..." : "Import Data"}</span>
+        </Button>
+      </label>
+      <input
+        id="import-file"
+        type="file"
+        accept=".xlsx,.xls,.csv"
+        hidden
+        onChange={handleImport}
+      />
+    </>
+  );
+}
+
 
 
 // 'use client'

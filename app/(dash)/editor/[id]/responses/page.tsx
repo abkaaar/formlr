@@ -16,6 +16,7 @@ import { db, schema } from "@/utils/db";
 import { eq, desc, asc } from "drizzle-orm";
 import { BarChart2Icon, Loader2, PieChartIcon } from "lucide-react";
 import type { Metadata } from "next";
+import { ImportButton } from "../components.client";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const userId = await getCurrentUser();
@@ -68,7 +69,7 @@ export default async function ResponsesPage({
 
             <CardFooter>
               {/* buttons */}
-              <div className="grid sm:grid-cols-2 gap-4 p-4">
+              <div className="grid sm:grid-cols-3 gap-4 p-4">
                 {/* <SendButton formId={form.id}>
                 <Button variant="secondary">Share</Button>
               </SendButton> */}
@@ -82,12 +83,13 @@ export default async function ResponsesPage({
                   formId={form.id}
                   initialAccepting={form.acceptingResponses}
                 />
-                <Button variant="secondary">Analytics & Visualization</Button>
+                <Button variant="secondary">Analytics</Button>
                 <Button variant="secondary" asChild>
                   <a href={`/api/export/${form.id}`} target="_blank">
                     Export to Excel
                   </a>
                 </Button>
+               <ImportButton formId={form.id} />
               </div>
             </CardFooter>
           </Card>

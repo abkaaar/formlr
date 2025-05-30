@@ -45,7 +45,7 @@ export default function Home() {
         <div className="flex flex-col gap-8 mx-auto py-32 sm:py-38 lg:py-36">
           <div className="flex flex-col items-center justify-center gap-8 text-center max-w-2xl mx-auto">
             <h1 className="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
-            Streamline Your Data Collection and Get  <span className="text-primary">Academic Insights</span>  Faster & Smarter.
+            Get  <span className="text-primary">Academic Insights</span>  Faster & Smarter.
             </h1>
             <p className="text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
               Formlr is a survey creation tool that lets users create,
@@ -73,6 +73,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
+          {/* Floating accent elements */}
+      <div className="absolute top-1/4 right-20 w-5 h-5 bg-primary/30 rounded-full animate-ping "></div>
+      <div className="absolute bottom-1/3 left-16 w-5 h-5 bg-purple-400/40 rounded-full animate-ping delay-75"></div>
+      <div className="absolute top-2/3 right-1/4 w-10 h-10 bg-blue-400/50 rounded-full animate-ping delay-100"></div>
       </section>
 
       {/* grid */}
@@ -435,7 +439,7 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="text-xl">Professional</CardTitle>
               <div className="mt-4">
-                <span className="text-4xl font-bold">$29</span>
+                <span className="text-4xl font-bold">$19</span>
                 <span className="text-slate-200">/month</span>
               </div>
             </CardHeader>
@@ -474,7 +478,7 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="text-xl">Enterprise</CardTitle>
               <div className="mt-4">
-                <span className="text-4xl font-bold">$99</span>
+                <span className="text-4xl font-bold">$39</span>
                 <span className="text-slate-700">/month</span>
               </div>
             </CardHeader>
